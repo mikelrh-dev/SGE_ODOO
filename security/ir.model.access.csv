@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_encuesta_user,access.encuesta.user,model_reto1_incidencias_encuesta,Reto1_incidencias.group_encuesta_user,1,0,1,0
+access_encuesta_manager,access.encuesta.manager,model_reto1_incidencias_encuesta,Reto1_incidencias.group_encuesta_manager,1,1,1,1
+access_incidencia_general,access.incidencia.general,model_reto1_incidencias_incidencia,base.group_user,1,1,1,0
+access_incidencia_manager,access.incidencia.manager,model_reto1_incidencias_incidencia,Reto1_incidencias.group_manager,1,1,1,1
+access_encuesta_etiqueta_user,access.encuesta.etiqueta.user,model_reto1_incidencias_encuesta_etiqueta,base.group_user,1,1,1,0
+access_comentario_general,access.comentario.general,model_reto1_incidencias_comentario,base.group_user,1,1,1,1
+access_estadisticas_user,access_estadisticas_user,model_reto1_incidencias_estadisticas,base.group_user,1,0,0,0
+access_estadisticas_manager,access_estadisticas_manager,model_reto1_incidencias_estadisticas,base.group_system,1,1,1,1
+access_adjunto_user,access.adjunto.user,model_reto1_incidencias_adjunto,base.group_user,1,1,1,0
+access_adjunto_manager,access.adjunto.manager,model_reto1_incidencias_adjunto,Reto1_incidencias.group_manager,1,1,1,1

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="menu_reto1_root"
+              name="Gestión de Incidencias"
+              web_icon="Reto1_Incidencias,static/description/icon.png"
+              sequence="1"/>
+
+    <record id="action_empleados_fusion" model="ir.actions.act_window">
+        <field name="name">Empleados</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_reto1_incidencia"
+              name="Incidencias"
+              parent="menu_reto1_root"
+              sequence="1"
+              action="action_incidencia"/>
+
+    <menuitem id="menu_reto1_estadisticas"
+              name="Estadísticas"
+              parent="menu_reto1_root"
+              sequence="2"
+              action="action_estadisticas"/>
+
+    <menuitem id="menu_reto1_encuesta"
+              name="Encuestas"
+              parent="menu_reto1_root"
+              sequence="3"
+              action="action_encuesta_window"/>
+
+    <menuitem id="menu_reto1_adjunto"
+              name="Adjuntos"
+              parent="menu_reto1_root"
+              sequence="4"
+              action="action_adjunto"/>
+
+    <menuitem id="menu_reto1_comentario"
+              name="Comentarios"
+              parent="menu_reto1_root"
+              sequence="5"
+              action="action_comentario"/>
+
+    <menuitem id="menu_reto1_empleado"
+              name="Empleados"
+              parent="menu_reto1_root"
+              sequence="6"
+              action="action_empleados_fusion"/>
+
+</odoo>

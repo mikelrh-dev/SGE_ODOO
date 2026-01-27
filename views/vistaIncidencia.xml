@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <record id="vista_incidencia_search" model="ir.ui.view">
+        <field name="name">reto1_incidencias.incidencia.search</field>
+        <field name="model">reto1_incidencias.incidencia</field>
+        <field name="arch" type="xml">
+            <search string="Buscar Incidencias">
+                <field name="titulo"/>
+                <field name="descripcion"/>
+                <field name="estado_actual"/>
+
+                <filter string="Solo Abiertas" name="filtro_abiertas" domain="[('estado_actual', '=', 'abierta')]"/>
+                <filter string="En Proceso" name="filtro_proceso" domain="[('estado_actual', '=', 'en_proceso')]"/>
+
+                <group expand="0" string="Agrupar por">
+                    <filter string="Estado" name="group_by_estado" context="{'group_by': 'estado_actual'}"/>
+                    <filter string="Departamento" name="group_by_dpto" context="{'group_by': 'id_departamento'}"/>
+                    <filter string="Fecha Creación" name="group_by_fecha" context="{'group_by': 'fecha_creacion'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+<record id="vista_incidencia_form" model="ir.ui.view">
+        <field name="name">reto1_incidencias.incidencia.form</field>
+        <field name="model">reto1_incidencias.incidencia</field>
+        <field name="arch" type="xml">
+            <form string="Incidencias">
+                <header>
+                    <field name="estado_actual" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="titulo" placeholder="Título de la incidencia..."/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="id_departamento"/>
+                            <field name="id_empleado_origen"/>
+                        </group>
+                        <group>
+                            <field name="fecha_creacion"/>
+                            <field name="fecha_cierre"/>
+                        </group>
+                    </group>
+
+                    <label for="descripcion"/>
+                    <field name="descripcion"/>
+
+                    <notebook>
+                        <page string="Archivos Adjuntos">
+                            <field name="adjunto_ids">
+                                <tree editable="bottom">
+                                    <field name="nombre_archivo"/>
+                                    <field name="fecha_subida"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Comentarios">
+                            <field name="comentario_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_reto1_incidencia_kanban" model="ir.ui.view">
+        <field name="name">reto1_incidencias.incidencia.kanban</field>
+        <field name="model">reto1_incidencias.incidencia</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="id_departamento">
+                <field name="estado_actual"/>
+                <field name="titulo"/>
+                <field name="id_departamento"/>
+                <field name="fecha_creacion"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_title">
+                                <strong><field name="titulo"/></strong>
+                            </div>
+                            <div>
+                                <span class="text-muted">Dpto: </span> <field name="id_departamento"/>
+                            </div>
+                            <div>
+                                <span class="text-muted">Estado: </span>
+                                <span t-attf-class="badge #{record.estado_actual.raw_value == 'cerrada' ? 'bg-success' : 'bg-warning'}">
+                                    <field name="estado_actual"/>
+                                </span>
+                            </div>
+                            <div class="text-muted small mt-1">
+                                <i class="fa fa-calendar" aria-hidden="true"></i> <field name="fecha_creacion"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+            <record id="vista_incidencia_tree" model="ir.ui.view">
+            <field name="name">reto1_incidencias.incidencia.tree</field>
+            <field name="model">reto1_incidencias.incidencia</field>
+            <field name="arch" type="xml">
+                        <tree string="Incidencias">
+                            <field name="titulo"/>
+                            <field name="descripcion"/>
+                            <field name="fecha_creacion"/>
+                            <field name="estado_actual"/>
+                        </tree>
+            </field>
+        </record>
+        <record id="action_incidencia" model="ir.actions.act_window">
+            <field name="name">Incidencias</field>
+            <field name="res_model">reto1_incidencias.incidencia</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id" ref="vista_incidencia_tree"/>
+        </record>
+</odoo>

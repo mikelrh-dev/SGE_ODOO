@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <!-- Vista formulario -->
+        <record id="vista_comentario_form" model="ir.ui.view">
+            <field name="name">reto1_incidencias.comentario.form</field>
+            <field name="model">reto1_incidencias.comentario</field>
+            <field name="arch" type="xml">
+                <form string="Comentarios de Incidencias">
+                    <sheet>
+                        <group>
+                            <field name="contenido"/>
+                            <field name="fecha"/>
+                            <field name="id_incidencia"/>
+                            <field name="id_empleado"/>
+                            <field name="total_adjuntos"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista lista (tree) -->
+        <record id="vista_comentario_tree" model="ir.ui.view">
+            <field name="name">reto1_incidencias.comentario.tree</field>
+            <field name="model">reto1_incidencias.comentario</field>
+            <field name="arch" type="xml">
+                <tree string="Adjunto">
+                            <field name="contenido"/>
+                            <field name="fecha"/>
+                            <field name="id_incidencia"/>
+                            <field name="id_empleado"/>
+                            <field name="total_adjuntos"/>
+                </tree>
+            </field>
+        </record>
+
+ <record id="view_reto1_comentario_kanban" model="ir.ui.view">
+        <field name="name">reto1_incidencias.comentario.kanban</field>
+        <field name="model">reto1_incidencias.comentario</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_title">
+                                <span>Comentario de: <field name="id_empleado"/></span>
+                            </div>
+                            <div>
+                                <field name="contenido" string="Contenido" truncate="100"/>
+                            </div>
+                            <div>
+                                Fecha: <field name="fecha"/>
+                            </div>
+                            <div>
+                                Adjuntos: <field name="total_adjuntos"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+        <!-- Acción para abrir las vistas -->
+        <record id="action_comentario" model="ir.actions.act_window">
+            <field name="name">Comentario</field>
+            <field name="res_model">reto1_incidencias.comentario</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_id" ref="vista_comentario_tree"/>
+        </record>
+</odoo>

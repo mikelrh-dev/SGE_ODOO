@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="view_hr_employee_inherit_departamento" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.departamento</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Gestión de Encuestas">
+                    <field name="encuesta_ids">
+                        <tree string="Historial de Encuestas">
+                            <field name="id_incidencia"/>
+                            <field name="fecha_respuesta"/>
+                            <field name="puntuacion" widget="badge"
+                                   decoration-danger="puntuacion in ('1', '2')"
+                                   decoration-success="puntuacion in ('4', '5')"/>
+                            <field name="resultado_texto"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

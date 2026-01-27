@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <record id="view_hr_department_form" model="ir.ui.view">
+        <field name="name">hr.department.form</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <field name="descripcion"/>
+            </xpath>
+
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Incidencias del Departamento">
+                        <field name="incidencia_ids">
+                            <tree editable="true">
+                                <field name="titulo"/>
+                                <field name="descripcion"/>
+                                <field name="fecha_creacion"/>
+                                <field name="estado_actual" />
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_hr_department_tree" model="ir.ui.view">
+        <field name="name">hr.department.tree</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="descripcion"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id="vista_adjunto_form" model="ir.ui.view">
+        <field name="name">reto1_incidencias.adjunto.form</field>
+        <field name="model">reto1_incidencias.adjunto</field>
+        <field name="arch" type="xml">
+            <form string="Adjuntos de Incidencias">
+                <sheet>
+                    <group>
+                        <field name="id_adjunto"/>
+
+                        <field name="id_comentario"/>
+
+                        <field name="nombre_archivo"/>
+                        <field name="ruta_archivo"/>
+                        <field name="fecha_subida"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="vista_adjunto_tree" model="ir.ui.view">
+        <field name="name">reto1_incidencias.adjunto.tree</field>
+        <field name="model">reto1_incidencias.adjunto</field>
+        <field name="arch" type="xml">
+            <tree string="Adjunto">
+                <field name="id_adjunto"/>
+                <field name="nombre_archivo"/>
+                <field name="ruta_archivo"/>
+                <field name="fecha_subida"/>
+            </tree>
+        </field>
+    </record>
+
+  <!-- Kanban para Adjuntos -->
+    <record id="view_reto1_adjunto_kanban" model="ir.ui.view">
+        <field name="name">reto1_incidencias.adjunto.kanban</field>
+        <field name="model">reto1_incidencias.adjunto</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_record_title">
+                                <span><field name="nombre_archivo"/></span>
+                            </div>
+                            <div>
+                                Fecha subida: <field name="fecha_subida"/>
+                            </div>
+                            <div>
+                                Comentario: <field name="id_comentario"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_adjunto" model="ir.actions.act_window">
+        <field name="name">Adjunto</field>
+        <field name="res_model">reto1_incidencias.adjunto</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_id" ref="vista_adjunto_tree"/>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="group_encuesta_user" model="res.groups">
+        <field name="name">Usuario de Encuestas</field>
+    </record>
+
+    <record id="group_encuesta_manager" model="res.groups">
+        <field name="name">Jefe de Encuestas</field>
+    </record>
+
+</odoo>
