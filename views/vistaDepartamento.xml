@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <odoo>
-    <record id="view_hr_department_form" model="ir.ui.view">
-        <field name="name">hr.department.form</field>
+    <record id="view_hr_department_form_inherit_stats" model="ir.ui.view">
+        <field name="name">hr.department.form.inherit.stats</field>
         <field name="model">hr.department</field>
         <field name="inherit_id" ref="hr.view_department_form"/>
         <field name="arch" type="xml">
+
             <xpath expr="//sheet/group" position="inside">
                 <field name="descripcion"/>
             </xpath>
@@ -14,11 +14,28 @@
                 <notebook>
                     <page string="Incidencias del Departamento">
                         <field name="incidencia_ids">
-                            <tree editable="true">
+                            <tree editable="bottom">
                                 <field name="titulo"/>
-                                <field name="descripcion"/>
                                 <field name="fecha_creacion"/>
-                                <field name="estado_actual" />
+                                <field name="estado_actual" widget="badge"
+                                       decoration-info="estado_actual == 'en_proceso'"
+                                       decoration-success="estado_actual in ('resuelta', 'cerrada')"/>
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Análisis de Estadísticas">
+                        <group>
+                            <p class="text-muted">
+                                <i class="fa fa-info-circle"/> Histórico de rendimiento calculado para este departamento.
+                            </p>
+                        </group>
+                        <field name="estadistica_ids" readonly="1">
+                            <tree>
+                                <field name="fecha"/>
+                                <field name="total_incidencias" sum="Total Histórico"/>
+                                <field name="incidencias_finalizadas" string="Resueltas"/>
+                                <field name="porcentaje_resueltas" widget="progressbar" string="% Éxito"/>
                             </tree>
                         </field>
                     </page>
@@ -27,13 +44,13 @@
         </field>
     </record>
 
-    <record id="view_hr_department_tree" model="ir.ui.view">
-        <field name="name">hr.department.tree</field>
+    <record id="view_hr_department_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.department.tree.inherit</field>
         <field name="model">hr.department</field>
         <field name="inherit_id" ref="hr.view_department_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//tree" position="inside">
-                <field name="descripcion"/>
+                <field name="descripcion" optional="show"/>
             </xpath>
         </field>
     </record>

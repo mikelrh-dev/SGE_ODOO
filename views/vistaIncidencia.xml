@@ -57,9 +57,16 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Comentarios">
-                            <field name="comentario_ids"/>
-                        </page>
+                            <page string="Comentarios">
+                                <field name="comentario_ids">
+                                    <tree empty_create="1">
+                                        <field name="id_empleado" string="Autor"/>
+                                        <field name="contenido"/>
+                                        <field name="fecha"/>
+                                        <field name="total_adjuntos" string="Adjuntos"/>
+                                    </tree>
+                                </field>
+                            </page>
                     </notebook>
                 </sheet>
             </form>

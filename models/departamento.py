@@ -12,3 +12,10 @@ class Departamento(models.Model):
         'id_departamento',
         string='Incidencias del Departamento'
     )
+
+    # --- AÑADE ESTO QUE ES LO QUE FALTA ---
+    estadistica_ids = fields.One2many(
+        'reto1_incidencias.estadisticas',  # Nombre de tu modelo de estadísticas
+        'id_departamento',  # Campo en estadísticas que apunta aquí
+        string='Estadísticas'
+    )

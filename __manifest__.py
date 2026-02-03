@@ -1,6 +1,6 @@
 {
-    'name': 'Reto1_Incidencias_Fusion',
-    'description': """ Gestión de Incidencias (Fusión: Adjuntos de Luis + Encuestas de Mikel) """,
+    'name': 'Reto1_Incidencias',
+    'description': "Gestión de Incidencias ",
     'category': 'Human Resources',
     'version': '1.0',
     'depends': ['base', 'hr', 'mail'],

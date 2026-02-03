@@ -112,11 +112,4 @@
     </record>
 
 
-
-    <menuitem id="menu_reto1_encuesta"
-              name="Encuestas"
-              parent="menu_reto1_root"
-              sequence="3"
-              action="action_encuesta_window"/>
-
 </odoo>

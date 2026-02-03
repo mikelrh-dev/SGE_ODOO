@@ -4,6 +4,7 @@ class Comentario(models.Model):
     _name = 'reto1_incidencias.comentario'
     _description = 'Comentario'
     _order = 'fecha desc'
+    _rec_name = 'contenido'
 
     contenido = fields.Text(string='Contenido', required=True)
     fecha = fields.Datetime(string='Fecha',default=fields.Datetime.now,readonly=True)
